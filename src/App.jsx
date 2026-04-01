@@ -1,11 +1,9 @@
-import Gallery from "./components/Gallery";
-import NamedComponentTest from "./components/NamedComponentTest";
+import SpreadComp from "./components/SpreadComp";
 
 export default function App() {
   return (
     <>
-      <NamedComponentTest />
-      <Gallery />
+      <SpreadComp />
     </>
   );
 }
