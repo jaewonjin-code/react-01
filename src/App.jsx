@@ -1,9 +1,11 @@
-import SpreadComp from "./components/SpreadComp";
+import PackingList from "./components/PackingList";
+import MovieHeroes from "./components/MovieHeroes";
 
 export default function App() {
   return (
     <>
-      <SpreadComp />
+      <PackingList />
+      <MovieHeroes />
     </>
   );
 }
