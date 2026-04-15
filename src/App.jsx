@@ -1,11 +1,11 @@
-import PackingList from "./components/PackingList";
-import MovieHeroes from "./components/MovieHeroes";
+import Kiosk from "./components/Kiosk";
+import TeaGathering from "./components/TeaGathering";
 
 export default function App() {
   return (
     <>
-      <PackingList />
-      <MovieHeroes />
+      {/* <Kiosk /> */}
+      <TeaGathering />
     </>
   );
 }
