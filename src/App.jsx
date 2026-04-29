@@ -1,11 +1,9 @@
-import Kiosk from "./components/Kiosk";
-import TeaGathering from "./components/TeaGathering";
+import ButtonCom from "./components/ButtonCom/ButtonCom";
 
 export default function App() {
   return (
     <>
-      {/* <Kiosk /> */}
-      <TeaGathering />
+      <ButtonCom />
     </>
   );
 }
