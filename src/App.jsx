@@ -1,9 +1,9 @@
-import ButtonCom from "./components/ButtonCom/ButtonCom";
+import Toolbar from "./components/ButtonCom/Toolbar";
 
 export default function App() {
   return (
     <>
-      <ButtonCom />
+      <Toolbar />
     </>
   );
 }

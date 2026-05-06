@@ -2,6 +2,49 @@
 
 👍 [리액트 공식 문서(한글)](https://ko.react.dev/)
 
+## 2026/05/06 (Week 10)
+
+### Note
+
+컴포넌트에 데이터를 전달할 때 props를 사용함. <br>
+`<button>` 태그에서 props를 사용하고 있음. <br>
+컴포넌트가 아닌 HTML 태그에서 props를 사용하고 있음. <br>
+
+React에서는 button을 컴포넌트처럼 처리하면서 props를 넘기기 때문임. <br>
+실제 react의 처리는 다음과 같음 <br>
+
+```jsx
+<button onClick={handleClick}>Click me</button>
+```
+
+```jsx
+React.createElement(
+  "button",
+  { onClick: handleClick }
+  "Click me"
+)
+```
+
+```jsx
+{
+  type: "button",
+  props : {
+    onClick: handleClick,
+    children: "Click me"
+  }
+}
+```
+
+### Note
+
+```js
+document.getElementById(id);
+```
+
+HTML 문서에서 고유한 id 속성을 가진 요소를 찾아 JavaScript 객체로 반환하는 메서드. <br>
+id 값을 따옴표로 감싸 매개변수로 전달하며, 요소가 없으면 null 반환. <br>
+주로 HTML의 내용 변경, 스타일 수정 등 DOM 조작에 사용됨. <br>
+
 ## 2026/04/29 (Week 9)
 
 ### UI를 트리 구조로 이해하기 - Render 트리
