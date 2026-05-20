@@ -1,13 +1,9 @@
-// import Bubble from "./components/Bubble/Bubble";
-import Signup1 from "./components/Signup1";
-import Signup2 from "./components/Signup2";
+import Carousel from "./components/Carousel/Carousel";
 
 export default function App() {
   return (
     <>
-      {/* <Bubble /> */}
-      <Signup1 />
-      <Signup2 />
+      <Carousel />
     </>
   );
 }

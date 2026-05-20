@@ -2,6 +2,162 @@
 
 👍 [리액트 공식 문서(한글)](https://ko.react.dev/)
 
+## 2026/05/20 (Week 12)
+
+### State Hook에 컴포넌트 상태 저장하기
+
+```jsx
+// 잘못된 코드 예시
+import { galleryImages } from "./imgData";
+
+export default function Carousel() {
+  let index = 0;
+
+  function handleClick() {
+    index += 1;
+    console.log(index);
+  }
+
+  let slide = galleryImages[index];
+
+  return (
+    <>
+      <button onClick={handleClick}>Next</button>
+      <h2>
+        <i>{slide.name}</i> by {slide.artist}
+      </h2>
+      <h3>
+        ({index + 1} of {galleryImages.length})
+        <img src={slide.url} alt={slide.alt} />
+        <p>{slide.description}</p>
+      </h3>
+    </>
+  );
+}
+```
+
+지역 변수를 사용하여 컴포넌트의 상태 저장은 불가능함.
+
+이벤트 핸들러를 이용해서 변수의 값을 변경해도 컴포넌트는 여전히 초기값을 적용하는 것이 문제임.
+
+React에서는 이런 경우 현재의 상태를 보관할 수 있는 메모리를 제공하는데 바로 State Hook임.
+
+State Hook을 사용하려면 React에서 useState를 import 해야함.
+
+```jsx
+// import 예시
+import { useState } from "react";
+```
+
+그 다음 변수로 선언했던 index를 state로 변경해줌.
+
+```jsx
+// useState 예시
+const [index, setIndex] = useState(0);
+```
+
+index는 state 변수이고, setIndex는 state를 변경하는 Setter 함수임.
+
+Setter 함수의 이름은 일반적으로 변수 이름 앞에 set을 붙인 함수명을 사용함.
+
+**"useState(0)"** 은 현재 index의 초기값을 0으로 초기화한 것임.
+
+```jsx
+import { useState } from "react";
+import { galleryImages } from "./imgData";
+
+export default function Carousel() {
+  // let index = 0;
+  const [index, setIndex] = useState(0);
+
+  function handleClick() {
+    // index += 1;
+    setIndex(index + 1);
+    console.log(index);
+  }
+
+  let slide = galleryImages[index];
+
+  return (
+    <>
+      <button onClick={handleClick}>Next</button>
+      <h2>
+        <i>{slide.name}</i> by {slide.artist}
+      </h2>
+      <h3>
+        ({index + 1} of {galleryImages.length})
+        <img src={slide.url} alt={slide.alt} />
+        <p>{slide.description}</p>
+      </h3>
+    </>
+  );
+}
+```
+
+---
+
+현재 코드는 index 값이 배열의 크기보다 크면 react가 화면 렌더링을 하지 않음.
+
+따라서 다음과 같이 코드 수정을 해야함.
+
+```jsx
+import { useState } from "react";
+import { galleryImages } from "./imgData";
+
+export default function Carousel() {
+  // let index = 0;
+  const [index, setIndex] = useState(0);
+
+  function handleClick() {
+    // index += 1;
+    // setIndex(index + 1);
+
+    // index는 0부터 시작하기 때문
+    if (index === galleryImages.length - 1) {
+      setIndex(0);
+    } else {
+      setIndex(index + 1);
+    }
+    console.log(index);
+  }
+
+  let slide = galleryImages[index];
+
+  return (
+    <>
+      <button onClick={handleClick}>Next</button>
+      <h2>
+        <i>{slide.name}</i> by {slide.artist}
+      </h2>
+      <h3>
+        ({index + 1} of {galleryImages.length})
+        <img src={slide.url} alt={slide.alt} />
+        <p>{slide.description}</p>
+      </h3>
+    </>
+  );
+}
+```
+
+---
+
+handleClick 함수의 이름은 handleNext로 변경 후 handlePrevious 함수 추가
+
+```jsx
+// 기존 내용과 동일
+
+function handlePrevious() {
+  if (index === 0) {
+    setIndex(galleryImages.length - 1);
+  } else {
+    setIndex(index - 1);
+  }
+  console.log(index);
+}
+
+// 기존 내용과 동일
+```
+
 ## 2026/05/13 (Week 11)
 
 ### 이벤트의 전파
